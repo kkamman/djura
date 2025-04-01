@@ -2,7 +2,9 @@
   "name": "@djura/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~19.2.0",
@@ -22,6 +24,8 @@
     "@angular/cli": "~19.2.0",
     "@angular/compiler-cli": "~19.2.0",
     "@angular/language-service": "~19.2.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.8.0",
     "@nx/angular": "20.7.0",
     "@nx/eslint": "20.7.0",
@@ -37,6 +41,7 @@
     "angular-eslint": "^19.2.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
+    "husky": "^9.1.7",
     "nx": "20.7.0",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",

@@ -33,5 +33,10 @@
       "style": "css",
       "unitTestRunner": "none"
     }
+  },
+  "release": {
+    "version": {
+      "conventionalCommits": true
+    }
   }
 }
