@@ -1,2 +1,94 @@
-<app-nx-welcome></app-nx-welcome>
+<div class="flex flex-col gap-4 p-4">
+  <div class="flex gap-4">
+    <button djrButton>Default</button>
+    <button djrButton [color]="'primary'">Primary</button>
+    <button djrButton [color]="'secondary'">Secondary</button>
+    <button djrButton [variant]="'outline'">Default</button>
+    <button djrButton [color]="'primary'" [variant]="'outline'">Primary</button>
+    <button djrButton [color]="'secondary'" [variant]="'outline'">
+      Secondary
+    </button>
+    <button djrButton [variant]="'text'">Default</button>
+    <button djrButton [color]="'primary'" [variant]="'text'">Primary</button>
+    <button djrButton [color]="'secondary'" [variant]="'text'">
+      Secondary
+    </button>
+  </div>
+  @let progress = (progress$ | async) ?? 0;
+  <div class="flex gap-4">
+    <button djrButton [progress]="progress">Default</button>
+    <button djrButton [progress]="progress" [color]="'primary'">Primary</button>
+    <button djrButton [progress]="progress" [color]="'secondary'">
+      Secondary
+    </button>
+    <button djrButton [progress]="progress" [variant]="'outline'">
+      Default
+    </button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [variant]="'outline'"
+    >
+      Primary
+    </button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [variant]="'outline'"
+    >
+      Secondary
+    </button>
+    <button djrButton [progress]="progress" [variant]="'text'">Default</button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [variant]="'text'"
+    >
+      Primary
+    </button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [variant]="'text'"
+    >
+      Secondary
+    </button>
+  </div>
+  <div class="flex gap-4">
+    <button djrButton disabled>Default</button>
+    <button djrButton [color]="'primary'" disabled>Primary</button>
+    <button djrButton [color]="'secondary'" disabled>Secondary</button>
+    <button djrButton [variant]="'outline'" disabled>Default</button>
+    <button djrButton [color]="'primary'" [variant]="'outline'" disabled>
+      Primary
+    </button>
+    <button djrButton [color]="'secondary'" [variant]="'outline'" disabled>
+      Secondary
+    </button>
+    <button djrButton [variant]="'text'" disabled>Default</button>
+    <button djrButton [color]="'primary'" [variant]="'text'" disabled>
+      Primary
+    </button>
+    <button djrButton [color]="'secondary'" [variant]="'text'" disabled>
+      Secondary
+    </button>
+  </div>
+  <div class="flex gap-4">
+    <a djrButton href="/">Default</a>
+    <a djrButton [color]="'primary'" href="/">Primary</a>
+    <a djrButton [color]="'secondary'" href="/">Secondary</a>
+    <a djrButton [variant]="'outline'" href="/">Default</a>
+    <a djrButton [color]="'primary'" [variant]="'outline'" href="/">Primary</a>
+    <a djrButton [color]="'secondary'" [variant]="'outline'" href="/">
+      Secondary
+    </a>
+    <a djrButton [variant]="'text'" href="/">Default</a>
+    <a djrButton [color]="'primary'" [variant]="'text'" href="/">Primary</a>
+    <a djrButton [color]="'secondary'" [variant]="'text'" href="/">Secondary</a>
+  </div>
+</div>
 <router-outlet></router-outlet>
