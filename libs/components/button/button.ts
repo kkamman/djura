@@ -9,7 +9,7 @@ import {
 import { cva, type VariantProps } from 'class-variance-authority';
 import { type ClassValue } from 'clsx';
 
-export const buttonVariants = cva(['djr-component', 'djr-button'], {
+export const buttonVariants = cva('djr-button', {
   variants: {
     color: {
       default: 'djr-button--default',
@@ -40,7 +40,7 @@ export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
   template: `<ng-content />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  styleUrl: './button.css',
+  styleUrl: './button.scss',
   host: {
     '[class]': 'computedClass()',
     '[style.--djr-button-progress]': 'progressPercentage()',

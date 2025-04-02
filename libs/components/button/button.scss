@@ -16,24 +16,17 @@
   }
 }
 
-/* TODO: Move to reset sheet, reset more properties so buttons and anchor elements look the same */
-.djr-component,
-.djr-component * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0 solid;
-}
-
-a.djr-component,
-.djr-component a {
-  color: inherit;
-  -webkit-text-decoration: inherit;
-  text-decoration: inherit;
-}
-
 /* TODO: Add more variables, refactor to reduce duplicate styles, use sass */
 .djr-button {
+  font: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background-color: transparent;
+  appearance: button;
+  opacity: 1;
+  text-decoration: inherit;
   box-sizing: border-box;
   margin: 0;
   border: 0 solid;
