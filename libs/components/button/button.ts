@@ -51,7 +51,7 @@ export class ButtonComponent {
 
   readonly variant = input<ButtonVariantProps['variant']>();
 
-  readonly userClass = input<ClassValue>('', { alias: 'class' });
+  readonly class = input<ClassValue>('');
 
   readonly disabled = input(false, { transform: booleanAttribute });
 
@@ -67,7 +67,7 @@ export class ButtonComponent {
       variant: this.variant(),
       disabled: this.disabled(),
       progress: this.progress() != null,
-      class: this.userClass(),
+      class: this.class(),
     })
   );
 }
