@@ -2,8 +2,9 @@
   "name": "djura",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0"
+    "@angular/core": "^19.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1"
   },
   "sideEffects": false
 }
