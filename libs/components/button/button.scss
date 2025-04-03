@@ -16,8 +16,20 @@
   }
 }
 
-/* TODO: Add more variables, refactor to reduce duplicate styles, use sass */
+$button-colors: (
+  'surface' var(--djr-color-surface-foreground) var(--djr-color-surface),
+  'primary' var(--djr-color-primary) var(--djr-color-primary-foreground),
+  'secondary' var(--djr-color-secondary) var(--djr-color-secondary-foreground)
+);
+
+/* TODO: Move to utilities partial */
+@function mix-transparency($color, $percentage) {
+  @return color-mix(in oklab, $color, transparent $percentage);
+}
+
+/* TODO: Add more variables */
 .djr-button {
+  $self: &;
   font: inherit;
   font-feature-settings: inherit;
   font-variation-settings: inherit;
@@ -31,7 +43,6 @@
   margin: 0;
   border: 0 solid;
   display: inline-flex;
-  min-width: 5rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -42,215 +53,70 @@
   font-weight: 600;
   transition: background 0.2s, --djr-button-progress 0.5s;
 
-  &.djr-button--default {
-    background-color: var(--djr-color-surface-foreground);
-    color: var(--djr-color-surface);
-    --djr-button-progress-color: var(--djr-color-surface-foreground);
+  &__label {
+    min-width: 4rem;
   }
 
-  &.djr-button--primary {
-    background-color: var(--djr-color-primary);
-    color: var(--djr-color-primary-foreground);
-    --djr-button-progress-color: var(--djr-color-primary);
+  @each $color-name, $color-a, $color-b in $button-colors {
+    &--#{$color-name} {
+      background-color: $color-a;
+      color: $color-b;
+      --djr-button-progress-color: #{$color-a};
+
+      &#{$self}--outline {
+        --djr-button-progress-color: #{mix-transparency($color-a, 80%)};
+        border-color: $color-a;
+      }
+
+      &#{$self}--text {
+        color: $color-a;
+        --djr-button-progress-color: #{mix-transparency($color-a, 80%)};
+      }
+
+      &#{$self}--progress#{$self}--basic {
+        background-color: mix-transparency($color-a, 30%);
+      }
+
+      &:not(#{$self}--disabled) {
+        &:hover,
+        &:active {
+          background-color: mix-transparency($color-a, 80%);
+
+          &#{$self}--basic {
+            background-color: mix-transparency($color-a, 20%);
+          }
+        }
+      }
+    }
   }
 
-  &.djr-button--secondary {
-    background-color: var(--djr-color-secondary);
-    color: var(--djr-color-secondary-foreground);
-    --djr-button-progress-color: var(--djr-color-secondary);
-  }
-
-  &.djr-button--outline {
-    border: solid 1px;
+  &--outline {
+    border-style: solid;
+    border-width: 1px;
     background-color: transparent;
     color: var(--djr-color-surface-foreground);
-
-    &.djr-button--default {
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-surface-foreground) 20%,
-        transparent
-      );
-    }
-
-    &.djr-button--primary {
-      border-color: var(--djr-color-primary);
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-primary) 20%,
-        transparent
-      );
-    }
-
-    &.djr-button--secondary {
-      border-color: var(--djr-color-secondary);
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-secondary) 20%,
-        transparent
-      );
-    }
   }
 
-  &.djr-button--text {
+  &--text {
     background-color: transparent;
-
-    &.djr-button--default {
-      color: var(--djr-color-surface-foreground);
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-surface-foreground) 20%,
-        transparent
-      );
-    }
-
-    &.djr-button--primary {
-      color: var(--djr-color-primary);
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-primary) 20%,
-        transparent
-      );
-    }
-
-    &.djr-button--secondary {
-      color: var(--djr-color-secondary);
-      --djr-button-progress-color: color-mix(
-        in oklab,
-        var(--djr-color-secondary) 20%,
-        transparent
-      );
-    }
   }
 
-  &.djr-button--progress {
-    background-color: transparent;
+  &--progress {
     background-image: linear-gradient(
       to right,
       var(--djr-button-progress-color) var(--djr-button-progress),
       transparent var(--djr-button-progress)
     );
-
-    &:not(.djr-button--outline, .djr-button--text) {
-      &.djr-button--default {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-surface-foreground) 70%,
-          transparent
-        );
-      }
-
-      &.djr-button--primary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-primary) 70%,
-          transparent
-        );
-      }
-
-      &.djr-button--secondary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-secondary) 70%,
-          transparent
-        );
-      }
-    }
-
-    &.djr-button--text,
-    &.djr-button--outline {
-      &.djr-button--default {
-        --djr-button-progress-color: color-mix(
-          in oklab,
-          var(--djr-color-surface-foreground) 20%,
-          transparent
-        );
-      }
-
-      &.djr-button--primary {
-        --djr-button-progress-color: color-mix(
-          in oklab,
-          var(--djr-color-primary) 20%,
-          transparent
-        );
-      }
-
-      &.djr-button--secondary {
-        --djr-button-progress-color: color-mix(
-          in oklab,
-          var(--djr-color-secondary) 20%,
-          transparent
-        );
-      }
-    }
   }
 
-  &.djr-button--disabled {
+  &--disabled {
     cursor: not-allowed;
     opacity: 0.4;
   }
 
-  &:not(.djr-button--disabled) {
-    &.djr-button--outline:hover,
-    &.djr-button--text:hover,
-    &.djr-button--outline:active,
-    &.djr-button--text:active {
-      &.djr-button--default {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-surface-foreground) 10%,
-          transparent
-        );
-      }
-
-      &.djr-button--primary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-primary) 10%,
-          transparent
-        );
-      }
-
-      &.djr-button--secondary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-secondary) 10%,
-          transparent
-        );
-      }
-    }
-
-    &:not(.djr-button--outline, .djr-button--text):hover,
-    &:not(.djr-button--outline, .djr-button--text):active {
-      &.djr-button--default {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-surface-foreground) 80%,
-          transparent
-        );
-      }
-
-      &.djr-button--primary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-primary) 80%,
-          transparent
-        );
-      }
-
-      &.djr-button--secondary {
-        background-color: color-mix(
-          in oklab,
-          var(--djr-color-secondary) 80%,
-          transparent
-        );
-      }
-    }
-
-    &:focus-visible {
-      outline: solid 2px var(--djr-color-primary);
-      outline-offset: 2px;
-    }
+  &:focus-visible {
+    outline: solid 2px var(--djr-color-primary);
+    outline-offset: 2px;
   }
 }
 

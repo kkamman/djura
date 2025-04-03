@@ -16,7 +16,7 @@ import { buttonVariants, type ButtonVariantProps } from './button.variants';
 @Component({
   selector: 'button[djrButton], a[djrButton]',
   imports: [],
-  template: `<ng-content />`,
+  template: `<span class="djr-button__label"><ng-content /></span>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrl: './button.scss',
