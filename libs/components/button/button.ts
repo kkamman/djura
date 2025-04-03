@@ -3,11 +3,15 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
+  ElementRef,
+  inject,
   input,
+  Renderer2,
   ViewEncapsulation,
 } from '@angular/core';
 import { type ClassValue } from 'clsx';
-import { type ButtonVariantProps, buttonVariants } from './button.variants';
+import { buttonVariants, type ButtonVariantProps } from './button.variants';
 
 @Component({
   selector: 'button[djrButton], a[djrButton]',
@@ -18,15 +22,31 @@ import { type ButtonVariantProps, buttonVariants } from './button.variants';
   styleUrl: './button.scss',
   host: {
     '[class]': 'computedClass()',
+    '[attr.disabled]': 'disabled() || null',
+    '[attr.aria-disabled]': 'disabled() || null',
+    '[attr.tabindex]': 'disabled() ? -1 : tabIndex()',
     '[style.--djr-button-progress]': 'progressPercentage()',
   },
 })
 export class ButtonComponent {
+  private readonly renderer = inject(Renderer2);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
+
+  constructor() {
+    if (this.elementRef.nativeElement.tagName === 'A') {
+      const unlisten = this.preventClickWhenDisabled();
+      this.destroyRef.onDestroy(() => unlisten());
+    }
+  }
+
   readonly color = input<ButtonVariantProps['color']>();
 
   readonly variant = input<ButtonVariantProps['variant']>();
 
   readonly class = input<ClassValue>('');
+
+  readonly tabIndex = input<number>();
 
   readonly disabled = input(false, { transform: booleanAttribute });
 
@@ -46,4 +66,17 @@ export class ButtonComponent {
       class: this.class(),
     })
   );
+
+  protected preventClickWhenDisabled() {
+    return this.renderer.listen(
+      this.elementRef.nativeElement,
+      'click',
+      (event: Event) => {
+        if (this.disabled()) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }
+    );
+  }
 }
