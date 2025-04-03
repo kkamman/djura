@@ -90,5 +90,24 @@
     <a djrButton [color]="'primary'" [variant]="'text'" href="/">Primary</a>
     <a djrButton [color]="'secondary'" [variant]="'text'" href="/">Secondary</a>
   </div>
+  <div class="flex gap-4">
+    <a djrButton disabled href="/">Default</a>
+    <a djrButton disabled [color]="'primary'" href="/">Primary</a>
+    <a djrButton disabled [color]="'secondary'" href="/">Secondary</a>
+    <a djrButton disabled [variant]="'outline'" href="/">Default</a>
+    <a djrButton disabled [color]="'primary'" [variant]="'outline'" href="/"
+      >Primary</a
+    >
+    <a djrButton disabled [color]="'secondary'" [variant]="'outline'" href="/">
+      Secondary
+    </a>
+    <a djrButton disabled [variant]="'text'" href="/">Default</a>
+    <a djrButton disabled [color]="'primary'" [variant]="'text'" href="/"
+      >Primary</a
+    >
+    <a djrButton disabled [color]="'secondary'" [variant]="'text'" href="/"
+      >Secondary</a
+    >
+  </div>
 </div>
 <router-outlet></router-outlet>
