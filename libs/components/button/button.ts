@@ -32,16 +32,17 @@ export class ButtonComponent {
 
   readonly progress = input<number>();
 
-  protected readonly progressPercentage = computed(
-    () => `${this.progress() ?? 100}%`
-  );
+  protected readonly progressPercentage = computed(() => {
+    const progress = this.progress();
+    return progress ? `${progress}%` : null;
+  });
 
   protected readonly computedClass = computed(() =>
     buttonVariants({
       color: this.color(),
       variant: this.variant(),
       disabled: this.disabled(),
-      progress: this.progress() != null,
+      progress: this.progressPercentage() != null,
       class: this.class(),
     })
   );
