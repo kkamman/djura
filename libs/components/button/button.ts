@@ -54,7 +54,7 @@ export class ButtonComponent {
 
   protected readonly progressPercentage = computed(() => {
     const progress = this.progress();
-    return progress ? `${progress}%` : null;
+    return progress != null ? `${progress}%` : null;
   });
 
   protected readonly computedClass = computed(() =>
