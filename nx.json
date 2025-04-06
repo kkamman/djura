@@ -50,6 +50,15 @@
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
       "conventionalCommits": true
+    },
+    "projects": ["libs/components"],
+    "changelog": {
+      "workspaceChangelog": {
+        "renderOptions": {
+          "authors": false
+        },
+        "createRelease": "github"
+      }
     }
   }
 }
