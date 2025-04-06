@@ -1,0 +1,3 @@
+@function mix-transparency($color, $percentage) {
+  @return color-mix(in oklab, $color, transparent $percentage);
+}

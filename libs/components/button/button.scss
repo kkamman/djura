@@ -1,20 +1,4 @@
-/* TODO: Move to theme file */
-:root {
-  --djr-color-surface: oklch(0.985 0 0);
-  --djr-color-surface-foreground: oklch(0.147 0.004 49.25);
-  --djr-color-primary: oklch(0.645 0.246 16.439);
-  --djr-color-primary-foreground: oklch(0.969 0.015 12.422);
-  --djr-color-secondary: oklch(0.585 0.233 277.117);
-  --djr-color-secondary-foreground: oklch(0.962 0.018 272.314);
-  --djr-font-display: 'Nunito', sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --djr-color-surface: oklch(0.147 0.004 49.25);
-    --djr-color-surface-foreground: oklch(0.985 0 0);
-  }
-}
+@use '../core/utils';
 
 $button-colors: (
   'surface' var(--djr-color-surface-foreground) var(--djr-color-surface),
@@ -22,12 +6,7 @@ $button-colors: (
   'secondary' var(--djr-color-secondary) var(--djr-color-secondary-foreground)
 );
 
-/* TODO: Move to utilities partial */
-@function mix-transparency($color, $percentage) {
-  @return color-mix(in oklab, $color, transparent $percentage);
-}
-
-/* TODO: Add more variables */
+/* TODO: Add more user customizable variables */
 .djr-button {
   $self: &;
   font: inherit;
@@ -64,26 +43,26 @@ $button-colors: (
       --djr-button-progress-color: #{$color-a};
 
       &#{$self}--outline {
-        --djr-button-progress-color: #{mix-transparency($color-a, 80%)};
+        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
         border-color: $color-a;
       }
 
       &#{$self}--text {
         color: $color-a;
-        --djr-button-progress-color: #{mix-transparency($color-a, 80%)};
+        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
       }
 
       &#{$self}--progress#{$self}--basic {
-        background-color: mix-transparency($color-a, 30%);
+        background-color: utils.mix-transparency($color-a, 30%);
       }
 
       &:not(#{$self}--disabled) {
         &:hover,
         &:active {
-          background-color: mix-transparency($color-a, 80%);
+          background-color: utils.mix-transparency($color-a, 80%);
 
           &#{$self}--basic {
-            background-color: mix-transparency($color-a, 20%);
+            background-color: utils.mix-transparency($color-a, 20%);
           }
         }
       }
