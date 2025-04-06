@@ -2,6 +2,10 @@
   "name": "@djura/source",
   "version": "0.0.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkamman/djura.git"
+  },
   "scripts": {
     "prepare": "husky"
   },

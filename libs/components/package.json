@@ -1,6 +1,10 @@
 {
   "name": "djura",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkamman/djura.git"
+  },
   "peerDependencies": {
     "@angular/core": "^19.2.0",
     "class-variance-authority": "^0.7.1",

@@ -6,7 +6,7 @@ export default {
     'scope-enum': [
       RuleConfigSeverity.Error,
       'always',
-      ['showcase', 'components', 'button'],
+      ['release', 'showcase', 'components', 'button'],
     ],
   },
 };
