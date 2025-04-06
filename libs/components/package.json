@@ -5,6 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/kkamman/djura.git"
   },
+  "license": "MIT",
   "peerDependencies": {
     "@angular/core": "^19.2.0",
     "class-variance-authority": "^0.7.1",

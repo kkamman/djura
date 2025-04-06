@@ -1,3 +1,7 @@
-# components
+# Djura
 
-This library was generated with [Nx](https://nx.dev).
+A simple Angular component library.
+
+## Components
+
+- [Button](button)
