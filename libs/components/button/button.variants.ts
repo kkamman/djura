@@ -11,6 +11,7 @@ export const buttonVariants = cva('djr-button', {
       basic: 'djr-button--basic',
       outline: 'djr-button--outline',
       text: 'djr-button--text',
+      link: 'djr-button--link',
     },
     progress: {
       true: 'djr-button--progress',

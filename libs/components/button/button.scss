@@ -22,19 +22,19 @@ $button-colors: (
   margin: 0;
   border: 0 solid;
   display: inline-flex;
+  gap: 0.5rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  min-width: 5rem;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   text-align: center;
   font-family: var(--djr-font-display);
   font-weight: 600;
-  transition: background 0.2s, --djr-button-progress 0.5s;
-
-  &__label {
-    min-width: 4rem;
-  }
+  transition:
+    background 0.2s,
+    --djr-button-progress 0.5s;
 
   @each $color-name, $color-a, $color-b in $button-colors {
     &--#{$color-name} {
@@ -52,6 +52,12 @@ $button-colors: (
         --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
       }
 
+      &#{$self}--link {
+        background-color: transparent;
+        color: $color-a;
+        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
+      }
+
       &#{$self}--progress#{$self}--basic {
         background-color: utils.mix-transparency($color-a, 30%);
       }
@@ -63,6 +69,11 @@ $button-colors: (
 
           &#{$self}--basic {
             background-color: utils.mix-transparency($color-a, 20%);
+          }
+
+          &#{$self}--link {
+            background-color: transparent;
+            text-decoration: underline;
           }
         }
       }

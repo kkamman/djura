@@ -16,7 +16,7 @@ import { buttonVariants, type ButtonVariantProps } from './button.variants';
 @Component({
   selector: 'button[djrButton], a[djrButton]',
   imports: [],
-  template: `<span class="djr-button__label"><ng-content /></span>`,
+  template: `<ng-content />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrl: './button.scss',
@@ -64,7 +64,7 @@ export class ButtonComponent {
       disabled: this.disabled(),
       progress: this.progressPercentage() != null,
       class: this.class(),
-    })
+    }),
   );
 
   protected preventClickWhenDisabled() {
@@ -76,7 +76,7 @@ export class ButtonComponent {
           event.preventDefault();
           event.stopImmediatePropagation();
         }
-      }
+      },
     );
   }
 }
