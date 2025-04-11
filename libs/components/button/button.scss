@@ -6,7 +6,6 @@ $button-colors: (
   'secondary' var(--djr-color-secondary) var(--djr-color-secondary-foreground)
 );
 
-/* TODO: Add more user customizable variables */
 .djr-button {
   $self: &;
   font: inherit;
@@ -22,16 +21,17 @@ $button-colors: (
   margin: 0;
   border: 0 solid;
   display: inline-flex;
-  gap: 0.5rem;
+  gap: var(--djr-button-gap);
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  min-width: 5rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  min-width: var(--djr-button-min-width);
+  border-radius: var(--djr-button-border-radius);
+  padding: var(--djr-button-padding);
   text-align: center;
-  font-family: var(--djr-font-display);
-  font-weight: 600;
+  font-family: var(--djr-button-font-family);
+  font-weight: var(--djr-button-font-weight);
+  font-size: var(--djr-button-font-size);
   transition:
     background 0.2s,
     --djr-button-progress 0.5s;
@@ -82,7 +82,7 @@ $button-colors: (
 
   &--outline {
     border-style: solid;
-    border-width: 1px;
+    border-width: var(--djr-button-border-width);
     background-color: transparent;
     color: var(--djr-color-surface-foreground);
   }
@@ -93,7 +93,7 @@ $button-colors: (
 
   &--progress {
     background-image: linear-gradient(
-      to right,
+      var(--djr-button-progress-angle),
       var(--djr-button-progress-color) var(--djr-button-progress),
       transparent var(--djr-button-progress)
     );
@@ -101,12 +101,13 @@ $button-colors: (
 
   &--disabled {
     cursor: not-allowed;
-    opacity: 0.4;
+    opacity: var(--djr-button-disabled-opacity);
   }
 
   &:focus-visible {
-    outline: solid 2px var(--djr-color-primary);
-    outline-offset: 2px;
+    outline: solid var(--djr-button-focus-ring-width)
+      var(--djr-button-focus-ring-color);
+    outline-offset: var(--djr-button-focus-ring-offset);
   }
 }
 
