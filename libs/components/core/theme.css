@@ -17,7 +17,11 @@
 
   /* Button */
   --djr-button-min-width: 5rem;
-  --djr-button-padding: 0.5rem 1rem;
+  --djr-button-icon-only-min-width: 0;
+  --djr-button-padding-x: 1rem;
+  --djr-button-padding-y: 0.5rem;
+  --djr-button-icon-only-padding-x: var(--djr-button-padding-y);
+  --djr-button-icon-only-padding-y: var(--djr-button-icon-only-padding-x);
   --djr-button-gap: 0.5rem;
   --djr-button-disabled-opacity: var(--djr-disabled-opacity);
   --djr-button-border-radius: var(--djr-border-radius);

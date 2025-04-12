@@ -14,6 +14,7 @@ $button-colors: (
   letter-spacing: inherit;
   color: inherit;
   background-color: transparent;
+  line-height: 1;
   appearance: button;
   opacity: 1;
   text-decoration: inherit;
@@ -27,7 +28,8 @@ $button-colors: (
   justify-content: center;
   min-width: var(--djr-button-min-width);
   border-radius: var(--djr-button-border-radius);
-  padding: var(--djr-button-padding);
+  padding-inline: var(--djr-button-padding-x);
+  padding-block: var(--djr-button-padding-y);
   text-align: center;
   font-family: var(--djr-button-font-family);
   font-weight: var(--djr-button-font-weight);
@@ -43,17 +45,12 @@ $button-colors: (
       --djr-button-progress-color: #{$color-a};
 
       &#{$self}--outline {
-        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
         border-color: $color-a;
-      }
-
-      &#{$self}--text {
-        color: $color-a;
         --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
       }
 
+      &#{$self}--text,
       &#{$self}--link {
-        background-color: transparent;
         color: $color-a;
         --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
       }
@@ -62,7 +59,7 @@ $button-colors: (
         background-color: utils.mix-transparency($color-a, 30%);
       }
 
-      &:not(#{$self}--disabled) {
+      &:not(#{$self}--disabled, #{$self}--link) {
         &:hover,
         &:active {
           background-color: utils.mix-transparency($color-a, 80%);
@@ -70,25 +67,36 @@ $button-colors: (
           &#{$self}--basic {
             background-color: utils.mix-transparency($color-a, 20%);
           }
-
-          &#{$self}--link {
-            background-color: transparent;
-            text-decoration: underline;
-          }
         }
       }
     }
   }
 
   &--outline {
-    border-style: solid;
-    border-width: var(--djr-button-border-width);
     background-color: transparent;
+    border-width: var(--djr-button-border-width);
     color: var(--djr-color-surface-foreground);
+    padding-inline: calc(
+      var(--djr-button-padding-x) - var(--djr-button-border-width)
+    );
+    padding-block: calc(
+      var(--djr-button-padding-y) - var(--djr-button-border-width)
+    );
   }
 
   &--text {
     background-color: transparent;
+  }
+
+  &--link {
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+      #{$self}__label {
+        text-decoration: underline;
+      }
+    }
   }
 
   &--progress {
@@ -102,6 +110,22 @@ $button-colors: (
   &--disabled {
     cursor: not-allowed;
     opacity: var(--djr-button-disabled-opacity);
+  }
+
+  &--icon-only {
+    min-width: var(--djr-button-icon-only-min-width);
+    padding-inline: var(--djr-button-icon-only-padding-x);
+    padding-block: var(--djr-button-icon-only-padding-y);
+  }
+
+  &--icon-right #{$self}__icon,
+  &--icon-bottom #{$self}__icon {
+    order: 1;
+  }
+
+  &--icon-bottom,
+  &--icon-top {
+    flex-direction: column;
   }
 
   &:focus-visible {

@@ -19,6 +19,15 @@ export const buttonVariants = cva('djr-button', {
     disabled: {
       true: 'djr-button--disabled',
     },
+    iconOnly: {
+      true: 'djr-button--icon-only',
+    },
+    iconPosition: {
+      left: 'djr-button--icon-left',
+      right: 'djr-button--icon-right',
+      top: 'djr-button--icon-top',
+      bottom: 'djr-button--icon-bottom',
+    },
   },
   defaultVariants: {
     color: 'surface',

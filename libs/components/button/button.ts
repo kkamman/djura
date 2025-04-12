@@ -3,20 +3,41 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   DestroyRef,
   ElementRef,
   inject,
   input,
   Renderer2,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { type ClassValue } from 'clsx';
 import { buttonVariants, type ButtonVariantProps } from './button.variants';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'button[djrButton], a[djrButton]',
-  imports: [],
-  template: `<ng-content />`,
+  imports: [NgTemplateOutlet],
+  template: `
+    <ng-content />
+    @if (iconTemplate()) {
+      <span class="djr-button__icon">
+        <ng-container *ngTemplateOutlet="iconTemplate() ?? null"></ng-container>
+      </span>
+    } @else if (icon()) {
+      <span class="djr-button__icon {{ icon() }}"></span>
+    }
+    @if (labelTemplate()) {
+      <span class="djr-button__label">
+        <ng-container
+          *ngTemplateOutlet="labelTemplate() ?? null"
+        ></ng-container>
+      </span>
+    } @else if (label()) {
+      <span class="djr-button__label">{{ label() }}</span>
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrl: './button.scss',
@@ -44,7 +65,17 @@ export class ButtonComponent {
 
   readonly variant = input<ButtonVariantProps['variant']>();
 
-  readonly class = input<ClassValue>('');
+  readonly class = input<ClassValue>();
+
+  readonly label = input<string>();
+
+  readonly labelTemplate = contentChild<TemplateRef<unknown>>('label');
+
+  readonly icon = input<string>();
+
+  readonly iconPosition = input<ButtonVariantProps['iconPosition']>();
+
+  readonly iconTemplate = contentChild<TemplateRef<unknown>>('icon');
 
   readonly tabIndex = input<number>();
 
@@ -64,6 +95,8 @@ export class ButtonComponent {
       disabled: this.disabled(),
       progress: this.progressPercentage() != null,
       class: this.class(),
+      iconOnly: (!!this.icon() || this.iconTemplate()) && !this.label(),
+      iconPosition: this.iconPosition(),
     }),
   );
 
