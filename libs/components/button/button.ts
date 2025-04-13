@@ -69,13 +69,9 @@ export class ButtonComponent {
 
   readonly label = input<string>();
 
-  readonly labelTemplate = contentChild<TemplateRef<unknown>>('label');
-
   readonly icon = input<string>();
 
   readonly iconPosition = input<ButtonVariantProps['iconPosition']>();
-
-  readonly iconTemplate = contentChild<TemplateRef<unknown>>('icon');
 
   readonly tabIndex = input<number>();
 
@@ -83,10 +79,23 @@ export class ButtonComponent {
 
   readonly progress = input<number>();
 
+  protected readonly labelTemplate =
+    contentChild<TemplateRef<unknown>>('label');
+
+  protected readonly iconTemplate = contentChild<TemplateRef<unknown>>('icon');
+
   protected readonly progressPercentage = computed(() => {
     const progress = this.progress();
     return progress != null ? `${progress}%` : null;
   });
+
+  private readonly hasLabel = computed(() =>
+    Boolean(this.label() || this.labelTemplate()),
+  );
+
+  private readonly hasIcon = computed(() =>
+    Boolean(this.icon() || this.iconTemplate()),
+  );
 
   protected readonly computedClass = computed(() =>
     buttonVariants({
@@ -95,7 +104,7 @@ export class ButtonComponent {
       disabled: this.disabled(),
       progress: this.progressPercentage() != null,
       class: this.class(),
-      iconOnly: (!!this.icon() || this.iconTemplate()) && !this.label(),
+      iconOnly: this.hasIcon() && !this.hasLabel(),
       iconPosition: this.iconPosition(),
     }),
   );
