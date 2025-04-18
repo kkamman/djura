@@ -22,20 +22,17 @@ import { NgTemplateOutlet } from '@angular/common';
   template: `
     <ng-content />
     @if (iconTemplate()) {
-      <span class="djr-button__icon">
-        <ng-container *ngTemplateOutlet="iconTemplate() ?? null"></ng-container>
-      </span>
+    <span class="djr-button__icon">
+      <ng-container *ngTemplateOutlet="iconTemplate() ?? null"></ng-container>
+    </span>
     } @else if (icon()) {
-      <span class="djr-button__icon {{ icon() }}"></span>
-    }
-    @if (labelTemplate()) {
-      <span class="djr-button__label">
-        <ng-container
-          *ngTemplateOutlet="labelTemplate() ?? null"
-        ></ng-container>
-      </span>
+    <span class="djr-button__icon {{ icon() }}"></span>
+    } @if (labelTemplate()) {
+    <span class="djr-button__label">
+      <ng-container *ngTemplateOutlet="labelTemplate() ?? null"></ng-container>
+    </span>
     } @else if (label()) {
-      <span class="djr-button__label">{{ label() }}</span>
+    <span class="djr-button__label">{{ label() }}</span>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -90,23 +87,24 @@ export class ButtonComponent {
   });
 
   private readonly hasLabel = computed(() =>
-    Boolean(this.label() || this.labelTemplate()),
+    Boolean(this.label() || this.labelTemplate())
   );
 
   private readonly hasIcon = computed(() =>
-    Boolean(this.icon() || this.iconTemplate()),
+    Boolean(this.icon() || this.iconTemplate())
   );
 
   protected readonly computedClass = computed(() =>
     buttonVariants({
-      color: this.color(),
-      variant: this.variant(),
+      color: this.color() ?? undefined,
+      variant: this.variant() ?? undefined,
       disabled: this.disabled(),
       progress: this.progressPercentage() != null,
       class: this.class(),
       iconOnly: this.hasIcon() && !this.hasLabel(),
-      iconPosition: this.iconPosition(),
-    }),
+      iconPosition:
+        this.hasIcon() && this.hasLabel() ? this.iconPosition() : undefined,
+    })
   );
 
   protected preventClickWhenDisabled() {
@@ -118,7 +116,7 @@ export class ButtonComponent {
           event.preventDefault();
           event.stopImmediatePropagation();
         }
-      },
+      }
     );
   }
 }
