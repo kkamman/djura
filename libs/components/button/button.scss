@@ -91,10 +91,12 @@ $button-colors: (
   &--link {
     background-color: transparent;
 
-    &:hover,
-    &:active {
-      #{$self}__label {
-        text-decoration: underline;
+    &:not(#{$self}--disabled) {
+      &:hover,
+      &:active {
+        #{$self}__label {
+          text-decoration: underline;
+        }
       }
     }
   }
