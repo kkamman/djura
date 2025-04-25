@@ -1,7 +1,16 @@
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
-/* @import "tailwindcss/preflight.css" layer(base); */
+@import 'tailwindcss/preflight.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
+
 @import '../../../libs/components/core/theme.css';
 
+@import '../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '../../../node_modules/@fortawesome/fontawesome-free/css/brands.css';
+@import '../../../node_modules/@fortawesome/fontawesome-free/css/solid.css';
+
 @custom-variant dark (&:where(.djr-dark, .djr-dark *));
+
+@theme {
+  --font-display: 'Nunito', sans-serif;
+}

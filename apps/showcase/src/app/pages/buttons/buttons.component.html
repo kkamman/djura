@@ -1,0 +1,381 @@
+<div class="flex flex-col gap-4">
+  <div class="flex gap-4">
+    <button djrButton [label]="'Default'"></button>
+    <button djrButton [color]="'primary'" [label]="'Primary'"></button>
+    <button djrButton [color]="'secondary'" [label]="'Secondary'"></button>
+    <button djrButton [variant]="'outline'" [label]="'Default'"></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'outline'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'outline'"
+      [label]="'Secondary'"
+    ></button>
+    <button djrButton [variant]="'text'" [label]="'Default'"></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'text'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'text'"
+      [label]="'Secondary'"
+    ></button>
+    <button djrButton [variant]="'link'" [label]="'Default'"></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'link'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'link'"
+      [label]="'Secondary'"
+    ></button>
+  </div>
+  <div class="flex gap-4">
+    <button
+      djrButton
+      [icon]="'fa-brands fa-github'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [variant]="'outline'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'outline'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'outline'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [variant]="'text'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'text'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'text'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [variant]="'link'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'link'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'link'"
+      [icon]="'fa-brands fa-github'"
+      [label]="'Secondary'"
+    ></button>
+  </div>
+  @let progress = (progress$ | async) ?? undefined;
+  <div class="flex gap-4">
+    <button djrButton [progress]="progress" [label]="'Default'"></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [variant]="'outline'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [variant]="'outline'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [variant]="'outline'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [variant]="'text'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [variant]="'text'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [variant]="'text'"
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [variant]="'link'"
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'primary'"
+      [variant]="'link'"
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [progress]="progress"
+      [color]="'secondary'"
+      [variant]="'link'"
+      [label]="'Secondary'"
+    ></button>
+  </div>
+  <div class="flex gap-4">
+    <button djrButton disabled [label]="'Default'"></button>
+    <button djrButton [color]="'primary'" disabled [label]="'Primary'"></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      disabled
+      [label]="'Secondary'"
+    ></button>
+    <button
+      djrButton
+      [variant]="'outline'"
+      disabled
+      [label]="'Default'"
+    ></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'outline'"
+      disabled
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'outline'"
+      disabled
+      [label]="'Secondary'"
+    ></button>
+    <button djrButton [variant]="'text'" disabled [label]="'Default'"></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'text'"
+      disabled
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'text'"
+      disabled
+      [label]="'Secondary'"
+    ></button>
+    <button djrButton [variant]="'link'" disabled [label]="'Default'"></button>
+    <button
+      djrButton
+      [color]="'primary'"
+      [variant]="'link'"
+      disabled
+      [label]="'Primary'"
+    ></button>
+    <button
+      djrButton
+      [color]="'secondary'"
+      [variant]="'link'"
+      disabled
+      [label]="'Secondary'"
+    ></button>
+  </div>
+  <div class="flex gap-4">
+    <a djrButton href="/" [label]="'Default'"></a>
+    <a djrButton [color]="'primary'" href="/" [label]="'Primary'"></a>
+    <a djrButton [color]="'secondary'" href="/" [label]="'Secondary'"></a>
+    <a djrButton [variant]="'outline'" href="/" [label]="'Default'"></a>
+    <a
+      djrButton
+      [color]="'primary'"
+      [variant]="'outline'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      [color]="'secondary'"
+      [variant]="'outline'"
+      href="/"
+      [label]="'Secondary'"
+    >
+    </a>
+    <a djrButton [variant]="'text'" href="/" [label]="'Default'"></a>
+    <a
+      djrButton
+      [color]="'primary'"
+      [variant]="'text'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      [color]="'secondary'"
+      [variant]="'text'"
+      href="/"
+      [label]="'Secondary'"
+    ></a>
+    <a djrButton [variant]="'link'" href="/" [label]="'Default'"></a>
+    <a
+      djrButton
+      [color]="'primary'"
+      [variant]="'link'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      [color]="'secondary'"
+      [variant]="'link'"
+      href="/"
+      [label]="'Secondary'"
+    ></a>
+  </div>
+  <div class="flex gap-4">
+    <a djrButton disabled href="/" [label]="'Default'"></a>
+    <a djrButton disabled [color]="'primary'" href="/" [label]="'Primary'"></a>
+    <a
+      djrButton
+      disabled
+      [color]="'secondary'"
+      href="/"
+      [label]="'Secondary'"
+    ></a>
+    <a
+      djrButton
+      disabled
+      [variant]="'outline'"
+      href="/"
+      [label]="'Default'"
+    ></a>
+    <a
+      djrButton
+      disabled
+      [color]="'primary'"
+      [variant]="'outline'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      disabled
+      [color]="'secondary'"
+      [variant]="'outline'"
+      href="/"
+      [label]="'Secondary'"
+    >
+    </a>
+    <a djrButton disabled [variant]="'text'" href="/" [label]="'Default'"></a>
+    <a
+      djrButton
+      disabled
+      [color]="'primary'"
+      [variant]="'text'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      disabled
+      [color]="'secondary'"
+      [variant]="'text'"
+      href="/"
+      [label]="'Secondary'"
+    ></a>
+    <a djrButton disabled [variant]="'link'" href="/" [label]="'Default'"></a>
+    <a
+      djrButton
+      disabled
+      [color]="'primary'"
+      [variant]="'link'"
+      href="/"
+      [label]="'Primary'"
+    ></a>
+    <a
+      djrButton
+      disabled
+      [color]="'secondary'"
+      [variant]="'link'"
+      href="/"
+      [label]="'Secondary'"
+    ></a>
+  </div>
+</div>
