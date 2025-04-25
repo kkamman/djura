@@ -6,6 +6,7 @@ import {
   contentChild,
   DestroyRef,
   ElementRef,
+  HOST_TAG_NAME,
   inject,
   input,
   Renderer2,
@@ -22,17 +23,20 @@ import { NgTemplateOutlet } from '@angular/common';
   template: `
     <ng-content />
     @if (iconTemplate()) {
-    <span class="djr-button__icon">
-      <ng-container *ngTemplateOutlet="iconTemplate() ?? null"></ng-container>
-    </span>
+      <span class="djr-button__icon">
+        <ng-container *ngTemplateOutlet="iconTemplate() ?? null"></ng-container>
+      </span>
     } @else if (icon()) {
-    <span class="djr-button__icon {{ icon() }}"></span>
-    } @if (labelTemplate()) {
-    <span class="djr-button__label">
-      <ng-container *ngTemplateOutlet="labelTemplate() ?? null"></ng-container>
-    </span>
+      <span class="djr-button__icon {{ icon() }}"></span>
+    }
+    @if (labelTemplate()) {
+      <span class="djr-button__label">
+        <ng-container
+          *ngTemplateOutlet="labelTemplate() ?? null"
+        ></ng-container>
+      </span>
     } @else if (label()) {
-    <span class="djr-button__label">{{ label() }}</span>
+      <span class="djr-button__label">{{ label() }}</span>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,15 +52,12 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class ButtonComponent {
   private readonly renderer = inject(Renderer2);
+
   private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor() {
-    if (this.elementRef.nativeElement.tagName === 'A') {
-      const unlisten = this.preventClickWhenDisabled();
-      this.destroyRef.onDestroy(() => unlisten());
-    }
-  }
+  private readonly tagName = inject(HOST_TAG_NAME);
 
   readonly color = input<ButtonVariantProps['color']>();
 
@@ -87,12 +88,14 @@ export class ButtonComponent {
   });
 
   private readonly hasLabel = computed(() =>
-    Boolean(this.label() || this.labelTemplate())
+    Boolean(this.label() || this.labelTemplate()),
   );
 
   private readonly hasIcon = computed(() =>
-    Boolean(this.icon() || this.iconTemplate())
+    Boolean(this.icon() || this.iconTemplate()),
   );
+
+  private readonly isAnchor = this.tagName === 'a';
 
   protected readonly computedClass = computed(() =>
     buttonVariants({
@@ -104,19 +107,29 @@ export class ButtonComponent {
       iconOnly: this.hasIcon() && !this.hasLabel(),
       iconPosition:
         this.hasIcon() && this.hasLabel() ? this.iconPosition() : undefined,
-    })
+    }),
   );
 
+  constructor() {
+    if (this.isAnchor) {
+      this.preventClickWhenDisabled();
+    }
+  }
+
   protected preventClickWhenDisabled() {
-    return this.renderer.listen(
+    const callback = (event: Event) => {
+      if (this.disabled()) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    };
+
+    const unlisten = this.renderer.listen(
       this.elementRef.nativeElement,
       'click',
-      (event: Event) => {
-        if (this.disabled()) {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-        }
-      }
+      callback,
     );
+
+    this.destroyRef.onDestroy(() => unlisten());
   }
 }
