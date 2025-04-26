@@ -106,7 +106,9 @@ export class ButtonComponent {
       class: this.class(),
       iconOnly: this.hasIcon() && !this.hasLabel(),
       iconPosition:
-        this.hasIcon() && this.hasLabel() ? this.iconPosition() : undefined,
+        this.hasIcon() && this.hasLabel()
+          ? (this.iconPosition() ?? 'left')
+          : undefined,
     }),
   );
 
