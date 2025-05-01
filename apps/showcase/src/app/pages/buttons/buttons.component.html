@@ -378,4 +378,7 @@
       [label]="'Secondary'"
     ></a>
   </div>
+  @for (demo of demos; track $index) {
+    <app-demo [demo]="demo" />
+  }
 </div>
