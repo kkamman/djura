@@ -8,14 +8,22 @@
       [routerLink]="'/'"
     >
     </a>
-    <a
-      djrButton
-      href="https://github.com/kkamman/djura"
-      [variant]="'text'"
-      [label]="'GitHub'"
-      [icon]="'fa-brands fa-github'"
-    >
-    </a>
+    <div class="flex gap-4">
+      <a
+        djrButton
+        href="https://github.com/kkamman/djura"
+        [variant]="'text'"
+        [label]="'GitHub'"
+        [icon]="'fa-brands fa-github'"
+      >
+      </a>
+      <button
+        djrButton
+        [variant]="'text'"
+        [icon]="isDarkMode() ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"
+        (click)="isDarkMode.set(!isDarkMode())"
+      ></button>
+    </div>
   </div>
   <div class="flex">
     <nav class="sticky top-0 h-full p-4">
