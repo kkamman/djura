@@ -120,6 +120,15 @@ $button-colors: (
     padding-block: var(--djr-button-icon-only-padding-y);
   }
 
+  #{$self}__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--djr-button-icon-size);
+    height: var(--djr-button-icon-size);
+    font-size: var(--djr-button-icon-size);
+  }
+
   &--icon-right #{$self}__icon,
   &--icon-bottom #{$self}__icon {
     order: 1;

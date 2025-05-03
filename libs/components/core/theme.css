@@ -33,6 +33,7 @@
   --djr-button-font-family: var(--djr-font-display);
   --djr-button-font-weight: 600;
   --djr-button-font-size: 1rem;
+  --djr-button-icon-size: var(--djr-button-font-size);
 }
 
 .djr-dark {
