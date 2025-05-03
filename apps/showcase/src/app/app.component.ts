@@ -7,7 +7,6 @@ import { ButtonComponent } from 'djura/button';
   imports: [ButtonComponent, RouterLink, RouterOutlet, RouterLinkActive],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {
   private readonly renderer = inject(Renderer2);

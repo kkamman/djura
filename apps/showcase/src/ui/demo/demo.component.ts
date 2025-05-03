@@ -5,6 +5,7 @@ import {
   inject,
   input,
   resource,
+  signal,
   Type,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,11 +14,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ButtonComponent } from 'djura/button';
 
 export interface Demo {
-  title: string;
-  selector: string;
-  template: string;
-  imports: Type<unknown>[];
+  component: Type<unknown>;
+  html: string;
+  ts: string;
 }
+
+const themes = {
+  light: 'github-light',
+  dark: 'github-dark',
+} as const;
 
 @Component({
   selector: 'app-demo',
@@ -30,32 +35,37 @@ export class DemoComponent {
 
   public readonly demo = input.required<Demo>();
 
-  protected readonly component = computed(() => {
-    const { selector, template, imports } = this.demo();
-    return Component({ selector, template, imports })(class {});
-  });
-
-  protected readonly highlightedTemplateResource = resource({
-    request: () => ({ template: this.demo().template }),
+  protected readonly highlightedHtmlResource = resource({
+    request: () => ({ template: this.demo().html }),
     loader: ({ request }) =>
       codeToHtml(request.template, {
         lang: 'angular-html',
-        themes: {
-          light: 'github-light',
-          dark: 'github-dark',
-        },
+        themes,
       }),
   });
 
-  protected readonly highlightedTemplate = computed(() =>
+  protected readonly highlightedTsResource = resource({
+    request: () => ({ template: this.demo().ts }),
+    loader: ({ request }) =>
+      codeToHtml(request.template, {
+        lang: 'angular-ts',
+        themes,
+      }),
+  });
+
+  protected readonly highlightedHtml = computed(() =>
     this.domSanitizer.bypassSecurityTrustHtml(
-      this.highlightedTemplateResource.value() ?? '',
+      this.highlightedHtmlResource.value() ?? '',
     ),
   );
 
-  protected isCodeVisible = false;
+  protected readonly highlightedTs = computed(() =>
+    this.domSanitizer.bypassSecurityTrustHtml(
+      this.highlightedTsResource.value() ?? '',
+    ),
+  );
 
-  protected toggleCode() {
-    this.isCodeVisible = !this.isCodeVisible;
-  }
+  protected readonly activeCodeView = signal<'html' | 'ts'>('html');
+
+  protected readonly isCodeViewActive = signal(false);
 }

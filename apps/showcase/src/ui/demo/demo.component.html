@@ -1,17 +1,44 @@
-<div class="flex flex-col rounded-lg bg-neutral-300 pb-4 dark:bg-neutral-800">
-  <div class="flex items-center justify-between px-4 py-2">
-    <p>{{ demo().title }}</p>
+<div class="relative flex flex-col bg-neutral-100 dark:bg-neutral-900">
+  <div class="absolute flex w-full justify-end p-2">
     <button
       djrButton
-      [icon]="'fa-solid fa-code'"
+      class="!opacity-50"
+      [icon]="isCodeViewActive() ? 'fa-solid fa-file' : 'fa-solid fa-file-code'"
       [variant]="'text'"
-      (click)="toggleCode()"
+      (click)="isCodeViewActive.set(!isCodeViewActive())"
     ></button>
   </div>
-  <div class="bg-neutral-200 px-4 py-8 dark:bg-neutral-900">
-    <ng-container *ngComponentOutlet="component()" />
+  <div class="flex min-h-60 items-center justify-center overflow-x-scroll">
+    <ng-container *ngComponentOutlet="demo().component" />
   </div>
-  @if (isCodeVisible) {
-    <div [innerHTML]="highlightedTemplate()"></div>
+  @if (isCodeViewActive()) {
+    <div class="relative h-full w-full">
+      <div class="absolute flex w-full justify-end p-2">
+        <button
+          djrButton
+          class="!min-w-0 !text-xs"
+          [class.!opacity-50]="activeCodeView() !== 'html'"
+          [label]="'HTML'"
+          [variant]="'text'"
+          (click)="activeCodeView.set('html')"
+        ></button>
+        <button
+          djrButton
+          class="!min-w-0 !text-xs"
+          [class.!opacity-50]="activeCodeView() !== 'ts'"
+          [label]="'TS'"
+          [variant]="'text'"
+          (click)="activeCodeView.set('ts')"
+        ></button>
+      </div>
+      @switch (activeCodeView()) {
+        @case ('html') {
+          <div [innerHTML]="highlightedHtml()"></div>
+        }
+        @case ('ts') {
+          <div [innerHTML]="highlightedTs()"></div>
+        }
+      }
+    </div>
   }
 </div>

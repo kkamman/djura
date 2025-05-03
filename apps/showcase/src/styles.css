@@ -23,3 +23,9 @@ body.djr-dark .shiki span {
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
+.shiki {
+  padding: 2.5rem;
+  overflow: scroll;
+  max-height: 500px;
+}

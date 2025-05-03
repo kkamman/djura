@@ -1,0 +1,25 @@
+@let progress = progress$ | async;
+
+<div class="flex justify-center gap-4">
+  <button djrButton [progress]="progress" [label]="'Default'"></button>
+  <button djrButton [progress]="progress" [color]="'primary'" [label]="'Primary'"></button>
+  <button djrButton [progress]="progress" [color]="'secondary'" [label]="'Secondary'"></button>
+</div>
+
+<div class="flex justify-center gap-4">
+  <button djrButton [progress]="progress" [variant]="'outline'" [label]="'Default'"></button>
+  <button djrButton [progress]="progress" [color]="'primary'" [variant]="'outline'" [label]="'Primary'"></button>
+  <button djrButton [progress]="progress" [color]="'secondary'" [variant]="'outline'" [label]="'Secondary'"></button>
+</div>
+
+<div class="flex justify-center gap-4">
+  <button djrButton [progress]="progress" [variant]="'text'" [label]="'Default'"></button>
+  <button djrButton [progress]="progress" [color]="'primary'" [variant]="'text'" [label]="'Primary'"></button>
+  <button djrButton [progress]="progress" [color]="'secondary'" [variant]="'text'" [label]="'Secondary'"></button>
+</div>
+
+<div class="flex justify-center gap-4">
+  <button djrButton [progress]="progress" [variant]="'link'" [label]="'Default'"></button>
+  <button djrButton [progress]="progress" [color]="'primary'" [variant]="'link'" [label]="'Primary'"></button>
+  <button djrButton [progress]="progress" [color]="'secondary'" [variant]="'link'" [label]="'Secondary'"></button>
+</div>

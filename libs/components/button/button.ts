@@ -75,7 +75,7 @@ export class ButtonComponent {
 
   readonly disabled = input(false, { transform: booleanAttribute });
 
-  readonly progress = input<number>();
+  readonly progress = input<number | null>();
 
   protected readonly labelTemplate =
     contentChild<TemplateRef<unknown>>('label');

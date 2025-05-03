@@ -4,8 +4,8 @@ export const appRoutes: Route[] = [
   {
     path: 'buttons',
     loadComponent: () =>
-      import('./pages/buttons/buttons.component').then(
-        (m) => m.ButtonsComponent
+      import('./pages/button/buttons.component').then(
+        (m) => m.ButtonsComponent,
       ),
   },
 ];
