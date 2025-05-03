@@ -1,8 +1,8 @@
 <div class="relative flex flex-col bg-neutral-100 dark:bg-neutral-900">
-  <div class="absolute flex w-full justify-end p-2">
+  <div class="pointer-events-none absolute flex w-full justify-end p-2">
     <button
       djrButton
-      class="!opacity-50"
+      class="pointer-events-auto !opacity-50"
       [icon]="isCodeViewActive() ? 'fa-solid fa-file' : 'fa-solid fa-file-code'"
       [variant]="'text'"
       (click)="isCodeViewActive.set(!isCodeViewActive())"
