@@ -26,6 +26,6 @@ body.djr-dark .shiki span {
 
 .shiki {
   padding: 2.5rem;
-  overflow: scroll;
+  overflow: auto;
   max-height: 500px;
 }
