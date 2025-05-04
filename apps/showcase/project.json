@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/showcase",
         "index": "apps/showcase/src/index.html",
         "browser": "apps/showcase/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/showcase/tsconfig.app.json",
         "assets": [
           {
@@ -21,7 +25,9 @@
             "input": "apps/showcase/public"
           }
         ],
-        "styles": ["apps/showcase/src/styles.css"],
+        "styles": [
+          "apps/showcase/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -76,6 +82,9 @@
         "staticFilePath": "dist/apps/showcase/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
     }
   }
 }
