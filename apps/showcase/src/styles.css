@@ -3,7 +3,7 @@
 @import 'tailwindcss/preflight.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@import '../../../libs/components/core/theme.css';
+@import '../../../libs/components/styles/theme.css';
 
 @import '../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
 @import '../../../node_modules/@fortawesome/fontawesome-free/css/brands.css';

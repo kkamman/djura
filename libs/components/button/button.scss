@@ -1,153 +1,155 @@
-@use '../core/utils';
+@use '../styles/utils';
 
-$button-colors: (
-  'surface' var(--djr-color-surface-foreground) var(--djr-color-surface),
-  'primary' var(--djr-color-primary) var(--djr-color-primary-foreground),
-  'secondary' var(--djr-color-secondary) var(--djr-color-secondary-foreground)
-);
+@layer components {
+  $button-colors: (
+    'surface' var(--djr-color-surface-foreground) var(--djr-color-surface),
+    'primary' var(--djr-color-primary) var(--djr-color-primary-foreground),
+    'secondary' var(--djr-color-secondary) var(--djr-color-secondary-foreground)
+  );
 
-.djr-button {
-  $self: &;
-  font: inherit;
-  font-feature-settings: inherit;
-  font-variation-settings: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  background-color: transparent;
-  line-height: 1;
-  appearance: button;
-  opacity: 1;
-  text-decoration: inherit;
-  box-sizing: border-box;
-  margin: 0;
-  border: 0 solid;
-  display: inline-flex;
-  gap: var(--djr-button-gap);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--djr-button-min-width);
-  border-radius: var(--djr-button-border-radius);
-  padding-inline: var(--djr-button-padding-x);
-  padding-block: var(--djr-button-padding-y);
-  text-align: center;
-  font-family: var(--djr-button-font-family);
-  font-weight: var(--djr-button-font-weight);
-  font-size: var(--djr-button-font-size);
-  transition:
-    background 0.2s,
-    --djr-button-progress 0.5s;
+  .djr-button {
+    $self: &;
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    line-height: 1;
+    appearance: button;
+    opacity: 1;
+    text-decoration: inherit;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0 solid;
+    display: inline-flex;
+    gap: var(--djr-button-gap);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--djr-button-min-width);
+    border-radius: var(--djr-button-border-radius);
+    padding-inline: var(--djr-button-padding-x);
+    padding-block: var(--djr-button-padding-y);
+    text-align: center;
+    font-family: var(--djr-button-font-family);
+    font-weight: var(--djr-button-font-weight);
+    font-size: var(--djr-button-font-size);
+    transition:
+      background 0.2s,
+      --djr-button-progress 0.5s;
 
-  @each $color-name, $color-a, $color-b in $button-colors {
-    &--#{$color-name} {
-      background-color: $color-a;
-      color: $color-b;
-      --djr-button-progress-color: #{$color-a};
+    @each $color-name, $color-a, $color-b in $button-colors {
+      &--#{$color-name} {
+        background-color: $color-a;
+        color: $color-b;
+        --djr-button-progress-color: #{$color-a};
 
-      &#{$self}--outline {
-        border-color: $color-a;
-        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
-      }
+        &#{$self}--outline {
+          border-color: $color-a;
+          --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
+        }
 
-      &#{$self}--text,
-      &#{$self}--link {
-        color: $color-a;
-        --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
-      }
+        &#{$self}--text,
+        &#{$self}--link {
+          color: $color-a;
+          --djr-button-progress-color: #{utils.mix-transparency($color-a, 80%)};
+        }
 
-      &#{$self}--progress#{$self}--basic {
-        background-color: utils.mix-transparency($color-a, 30%);
-      }
+        &#{$self}--progress#{$self}--basic {
+          background-color: utils.mix-transparency($color-a, 30%);
+        }
 
-      &:not(#{$self}--disabled, #{$self}--link) {
-        &:hover,
-        &:active {
-          background-color: utils.mix-transparency($color-a, 80%);
+        &:not(#{$self}--disabled, #{$self}--link) {
+          &:hover,
+          &:active {
+            background-color: utils.mix-transparency($color-a, 80%);
 
-          &#{$self}--basic {
-            background-color: utils.mix-transparency($color-a, 20%);
+            &#{$self}--basic {
+              background-color: utils.mix-transparency($color-a, 20%);
+            }
           }
         }
       }
     }
-  }
 
-  &--outline {
-    background-color: transparent;
-    border-width: var(--djr-button-border-width);
-    color: var(--djr-color-surface-foreground);
-    padding-inline: calc(
-      var(--djr-button-padding-x) - var(--djr-button-border-width)
-    );
-    padding-block: calc(
-      var(--djr-button-padding-y) - var(--djr-button-border-width)
-    );
-  }
+    &--outline {
+      background-color: transparent;
+      border-width: var(--djr-button-border-width);
+      color: var(--djr-color-surface-foreground);
+      padding-inline: calc(
+        var(--djr-button-padding-x) - var(--djr-button-border-width)
+      );
+      padding-block: calc(
+        var(--djr-button-padding-y) - var(--djr-button-border-width)
+      );
+    }
 
-  &--text {
-    background-color: transparent;
-  }
+    &--text {
+      background-color: transparent;
+    }
 
-  &--link {
-    background-color: transparent;
+    &--link {
+      background-color: transparent;
 
-    &:not(#{$self}--disabled) {
-      &:hover,
-      &:active {
-        #{$self}__label {
-          text-decoration: underline;
+      &:not(#{$self}--disabled) {
+        &:hover,
+        &:active {
+          #{$self}__label {
+            text-decoration: underline;
+          }
         }
       }
     }
+
+    &--progress {
+      background-image: linear-gradient(
+        var(--djr-button-progress-angle),
+        var(--djr-button-progress-color) var(--djr-button-progress),
+        transparent var(--djr-button-progress)
+      );
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: var(--djr-button-disabled-opacity);
+    }
+
+    &--icon-only {
+      min-width: var(--djr-button-icon-only-min-width);
+      padding-inline: var(--djr-button-icon-only-padding-x);
+      padding-block: var(--djr-button-icon-only-padding-y);
+    }
+
+    #{$self}__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--djr-button-icon-size);
+      height: var(--djr-button-icon-size);
+      font-size: var(--djr-button-icon-size);
+    }
+
+    &--icon-right #{$self}__icon,
+    &--icon-bottom #{$self}__icon {
+      order: 1;
+    }
+
+    &--icon-bottom,
+    &--icon-top {
+      flex-direction: column;
+    }
+
+    &:focus-visible {
+      outline: solid var(--djr-button-focus-ring-width)
+        var(--djr-button-focus-ring-color);
+      outline-offset: var(--djr-button-focus-ring-offset);
+    }
   }
 
-  &--progress {
-    background-image: linear-gradient(
-      var(--djr-button-progress-angle),
-      var(--djr-button-progress-color) var(--djr-button-progress),
-      transparent var(--djr-button-progress)
-    );
+  @property --djr-button-progress {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 100%;
   }
-
-  &--disabled {
-    cursor: not-allowed;
-    opacity: var(--djr-button-disabled-opacity);
-  }
-
-  &--icon-only {
-    min-width: var(--djr-button-icon-only-min-width);
-    padding-inline: var(--djr-button-icon-only-padding-x);
-    padding-block: var(--djr-button-icon-only-padding-y);
-  }
-
-  #{$self}__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--djr-button-icon-size);
-    height: var(--djr-button-icon-size);
-    font-size: var(--djr-button-icon-size);
-  }
-
-  &--icon-right #{$self}__icon,
-  &--icon-bottom #{$self}__icon {
-    order: 1;
-  }
-
-  &--icon-bottom,
-  &--icon-top {
-    flex-direction: column;
-  }
-
-  &:focus-visible {
-    outline: solid var(--djr-button-focus-ring-width)
-      var(--djr-button-focus-ring-color);
-    outline-offset: var(--djr-button-focus-ring-offset);
-  }
-}
-
-@property --djr-button-progress {
-  syntax: '<length-percentage>';
-  inherits: false;
-  initial-value: 100%;
 }

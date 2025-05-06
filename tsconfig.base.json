@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "djura": ["libs/components/public_api.ts"],
+      "djura": ["libs/components/core/public_api.ts"],
       "djura/button": ["libs/components/button/public_api.ts"]
     }
   },

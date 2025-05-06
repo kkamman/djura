@@ -1,6 +1,11 @@
 {
   "name": "djura",
   "version": "0.0.1",
+  "exports": {
+    "./theme.css": {
+      "style": "./styles/theme.css"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kkamman/djura.git"

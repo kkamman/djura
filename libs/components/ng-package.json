@@ -1,8 +1,10 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/libs/components",
-  "assets": ["./core/theme.css"],
+  "assets": [
+    { "input": "./styles", "glob": "theme.css", "output": "./styles" }
+  ],
   "lib": {
-    "entryFile": "public_api.ts"
+    "entryFile": "core/public_api.ts"
   }
 }

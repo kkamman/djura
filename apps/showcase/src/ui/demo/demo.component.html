@@ -2,7 +2,7 @@
   <div class="pointer-events-none absolute flex w-full justify-end p-2">
     <button
       djrButton
-      class="pointer-events-auto !opacity-50"
+      class="pointer-events-auto opacity-50"
       [icon]="isCodeViewActive() ? 'fa-solid fa-file' : 'fa-solid fa-file-code'"
       [variant]="'text'"
       (click)="isCodeViewActive.set(!isCodeViewActive())"
@@ -16,16 +16,16 @@
       <div class="absolute flex w-full justify-end p-2">
         <button
           djrButton
-          class="!min-w-0 !text-xs"
-          [class.!opacity-50]="activeCodeView() !== 'html'"
+          class="min-w-0 text-xs"
+          [class.opacity-50]="activeCodeView() !== 'html'"
           [label]="'HTML'"
           [variant]="'text'"
           (click)="activeCodeView.set('html')"
         ></button>
         <button
           djrButton
-          class="!min-w-0 !text-xs"
-          [class.!opacity-50]="activeCodeView() !== 'ts'"
+          class="min-w-0 text-xs"
+          [class.opacity-50]="activeCodeView() !== 'ts'"
           [label]="'TS'"
           [variant]="'text'"
           (click)="activeCodeView.set('ts')"
