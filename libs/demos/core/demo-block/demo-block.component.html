@@ -33,10 +33,10 @@
       </div>
       @switch (activeCodeView()) {
         @case ('html') {
-          <div [innerHTML]="highlightedHtml()"></div>
+          <demo-code-block [language]="'html'" [code]="demo().html" />
         }
         @case ('ts') {
-          <div [innerHTML]="highlightedTs()"></div>
+          <demo-code-block [language]="'ts'" [code]="demo().ts" />
         }
       }
     </div>

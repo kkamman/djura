@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ButtonComponent } from 'djura/button';
 
 @Component({
-  selector: 'app-button-demo-basic',
+  selector: 'demo-button-anchor',
   imports: [ButtonComponent],
-  templateUrl: './button-demo-basic.component.html',
+  templateUrl: './button-anchor.component.html',
   host: {
     class: 'flex flex-col gap-4',
   },
 })
-export class ButtonDemoBasicComponent {}
+export class ButtonAnchorComponent {}

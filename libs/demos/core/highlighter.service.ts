@@ -2,6 +2,8 @@ import { createHighlighterCore, type HighlighterCore } from 'shiki/core';
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
 import { Injectable } from '@angular/core';
 
+export type HighlighterLanguage = 'html' | 'ts' | 'css';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,15 +19,16 @@ export class HighlighterService {
       langs: [
         import('@shikijs/langs/angular-html'),
         import('@shikijs/langs/angular-ts'),
+        import('@shikijs/langs/css'),
       ],
       engine: createOnigurumaEngine(import('shiki/wasm')),
     });
   }
 
-  public highlight(lang: 'html' | 'ts', code: string): string {
+  public highlight(language: HighlighterLanguage, code: string): string {
     const highlighter = this.getHighlighter();
     return highlighter.codeToHtml(code, {
-      lang: `angular-${lang}`,
+      lang: language === 'css' ? language : `angular-${language}`,
       themes: {
         light: 'github-light',
         dark: 'github-dark',
