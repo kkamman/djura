@@ -6,7 +6,7 @@ import { interval, map } from 'rxjs';
 @Component({
   selector: 'demo-button-progress',
   imports: [ButtonComponent, AsyncPipe],
-  templateUrl: './button-progress.component.html',
+  templateUrl: './button-progress.demo.html',
   host: {
     class: 'flex flex-col gap-4',
   },
