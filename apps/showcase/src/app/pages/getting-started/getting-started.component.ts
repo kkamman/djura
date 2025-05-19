@@ -7,5 +7,20 @@ import { CodeBlockComponent } from '@djura/demos';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GettingStartedComponent {
-  protected readonly importStylesheetDemo = `@import "djura/theme.css";`;
+  protected readonly demos = {
+    importStylesheet: `@import "djura/theme.css";`,
+    addProvider: `import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app.routes';
+import { provideDjura } from 'djura';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(appRoutes),
+    provideDjura(),
+  ],
+};
+`,
+  };
 }

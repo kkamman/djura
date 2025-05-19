@@ -6,7 +6,6 @@ import {
   buttonDisabledDemo,
   buttonIconDemo,
   buttonProgressDemo,
-  type Demo,
   DemoBlockComponent,
 } from '@djura/demos';
 
@@ -16,12 +15,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonsComponent {
-  protected readonly demos: Demo[] = [
+  protected readonly demos = {
     buttonBasicDemo,
     buttonIconDemo,
     buttonDisabledDemo,
     buttonProgressDemo,
     buttonAnchorDemo,
     buttonAnchorDisabledDemo,
-  ];
+  };
 }

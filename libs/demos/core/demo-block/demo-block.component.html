@@ -33,10 +33,18 @@
       </div>
       @switch (activeCodeView()) {
         @case ('html') {
-          <demo-code-block [language]="'html'" [code]="demo().html" />
+          <demo-code-block
+            [language]="'html'"
+            [code]="demo().html"
+            [showLanguage]="false"
+          />
         }
         @case ('ts') {
-          <demo-code-block [language]="'ts'" [code]="demo().ts" />
+          <demo-code-block
+            [language]="'ts'"
+            [code]="demo().ts"
+            [showLanguage]="false"
+          />
         }
       }
     </div>

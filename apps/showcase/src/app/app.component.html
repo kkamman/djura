@@ -2,17 +2,17 @@
   <div class="flex justify-between p-4">
     <a
       djrButton
+      class="text-2xl hover:bg-transparent active:bg-transparent"
       href="https://github.com/kkamman/djura"
-      [variant]="'text'"
       [label]="'DJURA'"
+      [variant]="'text'"
       [routerLink]="'/'"
     >
     </a>
-    <div class="flex gap-4">
+    <div class="flex items-center gap-4">
       <a
         djrButton
         href="https://github.com/kkamman/djura"
-        [variant]="'text'"
         [label]="'GitHub'"
         [icon]="'fa-brands fa-github'"
       >
@@ -26,24 +26,32 @@
     </div>
   </div>
   <div class="flex">
-    <nav class="sticky top-0 h-full p-4">
-      <ul class="border-r border-r-white pr-4">
+    <nav class="sticky top-0 h-full w-xs p-4">
+      <ul class="border-r border-r-black pr-4 dark:border-r-white">
         <li>
-          <ul>
+          <ul class="flex flex-col gap-2">
             <li class="flex justify-end">
               <a
                 djrButton
                 class="w-full justify-start"
+                [class.font-bold]="gettingStartedRla.isActive"
+                [routerLink]="'/getting-started'"
+                routerLinkActive
+                #gettingStartedRla="routerLinkActive"
+                [label]="'Getting Started'"
+                [variant]="gettingStartedRla.isActive ? 'basic' : 'text'"
+              ></a>
+            </li>
+            <li class="flex justify-end">
+              <a
+                djrButton
+                class="w-full justify-start"
+                [class.font-bold]="buttonsRla.isActive"
                 [routerLink]="'/buttons'"
                 routerLinkActive
                 #buttonsRla="routerLinkActive"
                 [label]="'Buttons'"
-                [variant]="'text'"
-                [icon]="
-                  buttonsRla.isActive
-                    ? 'fa-solid fa-circle-check'
-                    : 'fa-solid fa-circle'
-                "
+                [variant]="buttonsRla.isActive ? 'basic' : 'text'"
               ></a>
             </li>
           </ul>

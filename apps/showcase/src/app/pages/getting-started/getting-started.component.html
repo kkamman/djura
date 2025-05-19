@@ -1,1 +1,19 @@
-<demo-code-block [language]="'css'" [code]="importStylesheetDemo" />
+<div class="flex flex-col gap-4">
+  <h1>Getting Started</h1>
+
+  <h2>Styles</h2>
+
+  <p>Import the <i class="inline-code">theme.css</i> stylesheet.</p>
+
+  <demo-code-block [language]="'css'" [code]="demos.importStylesheet" />
+
+  <h2>Provider</h2>
+
+  <p>
+    Add the
+    <i class="inline-code">provideDjura</i>
+    provider to your app configuration.
+  </p>
+
+  <demo-code-block [language]="'ts'" [code]="demos.addProvider" />
+</div>

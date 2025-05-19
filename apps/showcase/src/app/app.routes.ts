@@ -15,4 +15,8 @@ export const appRoutes: Route[] = [
         (m) => m.ButtonsComponent,
       ),
   },
+  {
+    path: '**',
+    redirectTo: 'getting-started',
+  },
 ];

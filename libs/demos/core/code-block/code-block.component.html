@@ -1,1 +1,8 @@
+@if (showLanguage()) {
+  <div class="relative h-full w-full">
+    <div class="absolute flex w-full justify-end p-3 pr-6">
+      {{ language() }}
+    </div>
+  </div>
+}
 <div [innerHTML]="code() | highlight: language()"></div>
