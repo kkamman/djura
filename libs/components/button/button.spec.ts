@@ -40,9 +40,7 @@ describe('ButtonComponent', () => {
           fixture.changeDetectorRef.detectChanges();
           fixture.detectChanges();
 
-          expect(buttonDe.nativeElement.classList.contains(expectedClass)).toBe(
-            true,
-          );
+          expect(buttonDe.nativeElement.classList).toContain(expectedClass);
         });
       });
 
@@ -65,9 +63,7 @@ describe('ButtonComponent', () => {
           fixture.changeDetectorRef.detectChanges();
           fixture.detectChanges();
 
-          expect(buttonDe.nativeElement.classList.contains(expectedClass)).toBe(
-            true,
-          );
+          expect(buttonDe.nativeElement.classList).toContain(expectedClass);
         });
       });
 
@@ -92,9 +88,15 @@ describe('ButtonComponent', () => {
           fixture.changeDetectorRef.detectChanges();
           fixture.detectChanges();
 
-          expect(
-            buttonDe.nativeElement.classList.contains(disabledClassName),
-          ).toBe(shouldHaveClass);
+          if (shouldHaveClass) {
+            expect(buttonDe.nativeElement.classList).toContain(
+              disabledClassName,
+            );
+          } else {
+            expect(buttonDe.nativeElement.classList).not.toContain(
+              disabledClassName,
+            );
+          }
         });
       });
 
@@ -178,9 +180,15 @@ describe('ButtonComponent', () => {
               fixture.changeDetectorRef.detectChanges();
               fixture.detectChanges();
 
-              expect(
-                buttonDe.nativeElement.classList.contains(iconOnlyClassName),
-              ).toBe(shouldHaveClass);
+              if (shouldHaveClass) {
+                expect(buttonDe.nativeElement.classList).toContain(
+                  iconOnlyClassName,
+                );
+              } else {
+                expect(buttonDe.nativeElement.classList).not.toContain(
+                  iconOnlyClassName,
+                );
+              }
             },
           );
         },
@@ -217,9 +225,7 @@ describe('ButtonComponent', () => {
               fixture.changeDetectorRef.detectChanges();
               fixture.detectChanges();
 
-              expect(
-                buttonDe.nativeElement.classList.contains(expectedClass),
-              ).toBe(true);
+              expect(buttonDe.nativeElement.classList).toContain(expectedClass);
             },
           );
         },
@@ -251,9 +257,15 @@ describe('ButtonComponent', () => {
           fixture.changeDetectorRef.detectChanges();
           fixture.detectChanges();
 
-          expect(
-            buttonDe.nativeElement.classList.contains(progressClassName),
-          ).toBe(shouldHaveClass);
+          if (shouldHaveClass) {
+            expect(buttonDe.nativeElement.classList).toContain(
+              progressClassName,
+            );
+          } else {
+            expect(buttonDe.nativeElement.classList).not.toContain(
+              progressClassName,
+            );
+          }
         });
       });
 
@@ -324,9 +336,7 @@ describe('ButtonComponent', () => {
             );
             if (shouldHaveChildElement) {
               expect(iconChildDe).toBeTruthy();
-              expect(
-                iconChildDe.nativeElement.classList.contains(iconInput),
-              ).toBe(true);
+              expect(iconChildDe.nativeElement.classList).toContain(iconInput);
             } else {
               expect(iconChildDe).toBeFalsy();
             }
@@ -549,9 +559,7 @@ describe('ButtonComponent', () => {
         fixture.changeDetectorRef.detectChanges();
         fixture.detectChanges();
 
-        expect(buttonDe.nativeElement.classList.contains('user-class')).toBe(
-          true,
-        );
+        expect(buttonDe.nativeElement.classList).toContain('user-class');
       });
 
       it('should emit click event when not disabled', () => {
