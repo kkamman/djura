@@ -22,6 +22,16 @@ describe('ButtonComponent', () => {
 
   testElements.forEach((testElement) => {
     describe(`as ${testElement.displayName}`, () => {
+      it('should apply class djr-button', () => {
+        const buttonDe = fixture.debugElement.query(
+          By.css(testElement.elementName),
+        );
+
+        fixture.detectChanges();
+
+        expect(buttonDe.nativeElement.classList).toContain('djr-button');
+      });
+
       const colorClassTestCases = [
         { colorInput: 'surface', expectedClass: 'djr-button--surface' },
         { colorInput: 'primary', expectedClass: 'djr-button--primary' },
